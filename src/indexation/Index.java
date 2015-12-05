@@ -14,31 +14,57 @@ import indexation.content.Token;
 import indexation.processing.Builder;
 import indexation.processing.Normalizer;
 import indexation.processing.Tokenizer;
-
+/**
+ *  Classe Index chargée de représenter le fichier inverse
+ * @author thomas
+ *
+ */
 public class Index implements Serializable
 {
+	//Serializable
 	private static final long serialVersionUID = 1L;
+	//Pour stocker le lexique et les listes de postings associées aux termes
 	public IndexEntry[] data;
-	public Normalizer normalizer;
+	//Permet de tokeniser
 	public Tokenizer tokenizer;
+	//Permet de normaliser des tokens
+	public Normalizer normalizer;
 	
+	/**
+	 * Permet d'initialiser le tableau data d'indexEntry
+	 * @param size La taille du tableau data
+	 */
 	public Index(int size)
 	{
-		System.out.println("Size est de = " + size);
+		//Initialisation du tableau
 		data = new IndexEntry[size];
 	}
-
+	/**
+	 * Affiche le contenu de l’index dans la console
+	 */
 	void print()
 	{
+		//Parcour tout le tableau data
 		for(IndexEntry indexEntry : data)
-			indexEntry.toString();
+			//Affichage de chaque IndexEntry
+			System.out.println(indexEntry.toString());
 	}
-	
+	/**
+	 * Renvoie l’entrée de l’index associée au terme term passé en paramètre
+	 * @param term Le terme que l'on cherche
+	 * @return null Si le terme n'existe pas
+	 * @return l'indexEntry du terme
+	 */
 	public IndexEntry getEntry(String term)
 	{
-		int res = Arrays.binarySearch(data,term);
+		//Création d'un IndexEntry représentant le terme
+		IndexEntry indexEntry = new IndexEntry(term);
+		//Cherche si le l'indexEntry représentant le terme est dans le tableau
+		int res = Arrays.binarySearch(data,indexEntry);
+		//Si le terme n'est pas présent
 		if(res < 0)
 			return null;
+		//Si le terme est présent on retourne son IndexEntry Corespondant 
 		return this.data[res];
 	}
 	
