@@ -52,6 +52,6 @@ public class Posting implements Comparable<Posting>, Serializable
 	 */
 	public String toString()
 	{
-		return(docId + "\n");
+		return(docId + " ");
 	}
 }

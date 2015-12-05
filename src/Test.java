@@ -5,14 +5,24 @@ import java.util.List;
 import indexation.Index;
 import indexation.content.Posting;
 import query.AndQueryEngine;
+/**
+ * Permet de tester l'indexation
+ * @author thomas
+ *
+ */
 public class Test
 {
-	static String CORPUS_FOLDER =".." + File.separator +"Common" + File.separator +"corpus2";
+	//le chemin du corpus remplacer TP_Indexation_Common par Common si le dépot n'est pas utilisé
+	static String CORPUS_FOLDER =".." + File.separator +"TP_Indexation_Common" + File.separator +"corpus2";
 	static String INDEX_DATA =".." + File.separator +"data" + File.separator +"index.data";
+	
+	/**
+	 * Chargée de construire et afficher un index
+	 */
 	public static void testIndexation()
 	{
 		Index index = Index.indexCorpus(CORPUS_FOLDER);
-		index.write(INDEX_DATA);
+		//index.write(INDEX_DATA);
 	}
 	
 	private static List<String> getFileNames(List<Posting> postings)
@@ -40,7 +50,7 @@ public class Test
 	
 	public static void main(String[] args)
 	{
-		//testIndexation();
-		testQuery();
+		testIndexation();
+		//testQuery();
 	}
 }

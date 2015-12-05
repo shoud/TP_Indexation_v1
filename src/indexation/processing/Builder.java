@@ -57,7 +57,7 @@ public class Builder
 					//Incrementation du compteur de 1 car les types diffèrent 
 					compteur++;
 			}
-			//On garde le token precdedent
+			//On garde le token precedent
 			tokenPrecedent = tokenSuivant;
 		}
 		//Retourne le nombre de type consécutifs différents
@@ -83,10 +83,14 @@ public class Builder
 		{ 
 			//Première itération de la boucle
 			if(termeCourant == null)
+			{
+				//Récupération du nouveau terme courant
+				termeCourant = token.getType();
 				//Création du nouvelle indexEntry dans data
-				index.data[positionData] = new IndexEntry(token.getType());
+				index.data[positionData] = new IndexEntry(termeCourant);
+			}
 			//Si le terme courant et différent de celui du token actuel
-			if(!termeCourant.equals(token.getType()))
+			else if(!termeCourant.equals(token.getType()))
 			{ 
 				//Déplacement dans le tableau data
 				positionData++;
@@ -99,6 +103,8 @@ public class Builder
 			Posting posting = new Posting(token.getDocId());
 			//Rajout du posting dans l'indexEntry du tableau data
 			index.data[positionData].postings.add(posting);
+			//Incrementation de la fréquence dans l'indexEntry
+			index.data[positionData].setFrequency();
 			//Incrementation car un posting placé
 			compteur++;
 		}

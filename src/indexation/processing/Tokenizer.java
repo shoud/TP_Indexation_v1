@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -20,6 +21,8 @@ public class Tokenizer implements Serializable
 {
 	//Car objet serialisable
 	private static final long serialVersionUID = 1L;
+	//Permet de définir un docId par document
+	private static int docId = 0;
 	//Pour ne pas prendre en compte ce qui n'est pas une lettre ou un chiffre
 	private String regex = "[^\\pL\\pN]";
 	
@@ -33,7 +36,7 @@ public class Tokenizer implements Serializable
 	 public List<String> tokenizeString(String string)
 	 {
 		 //La liste retournée		 
-		 List<String> list = new ArrayList<String>();
+		 List<String> list = new LinkedList<String>(); //ArrayList
 		 //Récupération de chaque mots
 		 for(String mot : string.split(regex))
 			 //Si mot n'est pas vide
@@ -103,7 +106,8 @@ public class Tokenizer implements Serializable
 			 //Récupération du document grâce à son nom
 			 File document = new File(folder + File.separator + nameFile);
 			 //Tokenisation du document, mise à jour de la liste de token
-			 tokenizeDocument(document, 0, list);
+			 tokenizeDocument(document, docId, list);
+			 docId++;
 		 }
 		 //La liste de token du corpus
 		 return list;

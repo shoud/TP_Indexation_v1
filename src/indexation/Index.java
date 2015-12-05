@@ -67,36 +67,56 @@ public class Index implements Serializable
 		//Si le terme est présent on retourne son IndexEntry Corespondant 
 		return this.data[res];
 	}
-	
+	/**
+	 * Chargée de réaliser l’indexation, i.e. d’enchaîner la
+	 * segmentation (tokénisation), la normalisation et la construction, sur le corpus contenu dans le
+	 * dossier indiqué par le paramètre folder.
+	 * @param folder Le dossier contenant le corpus à indexer
+	 * @return l'index créé
+	 */
 	public static Index indexCorpus(String folder)
 	{
 		long startTotal = System.currentTimeMillis();
+		//L'index qui va être créé
 		Index index;
+		//Permet de tokeniser
 		Tokenizer tokenizer = new Tokenizer();
+		//Permet de normaliser
 		Normalizer normalizer = new Normalizer();
+		//Permet de construire l'index
 		Builder builder = new Builder();
 		System.out.println("Tokenizing corpus...");
 		long start = System.currentTimeMillis();
+		//Tokenisation du corpus
 		List<Token> listToken = tokenizer.tokenizeCorpus(folder);
 		long end = System.currentTimeMillis();
 		System.out.println(listToken.size() + " tokens were found, duration="+ (end - start) +" ms");
 		System.out.println("Normalizing tokens...");
 		start = System.currentTimeMillis();
+		//Normalisation des tokens
 		normalizer.normalizeTokens(listToken);
 		end = System.currentTimeMillis();
 		System.out.println(listToken.size() + " tokens remaining after normalization, duration="+ (end - start) +" ms");
 		System.out.println("Building index...");
 		start = System.currentTimeMillis();
+		//Création de l'index
 		index = builder.buildIndex(listToken);
 		end = System.currentTimeMillis();
 		System.out.println(listToken.size() + " tokens remaining after normalization, duration="+ (end - start) +" ms");
+		//Mise à jour du normlizer de l'index
 		index.normalizer = normalizer;
+		//Mise à jour du tokenizer de l'index
 		index.tokenizer = tokenizer;
 		System.out.println("Total duration="+ (System.currentTimeMillis() - startTotal) +" ms");
+		//Affichage de l'index créé
 		index.print();
+		//Retourne le nouvelle index
 		return index;
 	}
-	
+	/**
+	 *  Enregistre l’index dans le fichier dont le nom est passé en paramètre
+	 * @param fileName Le nom du fichier d'enregistrement
+	 */
 	public void write(String fileName)
 	{
 		try
