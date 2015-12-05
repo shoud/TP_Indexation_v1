@@ -8,7 +8,7 @@ package indexation.content;
 public class Token implements Comparable<Token>
 {
 	//type associé au token
-	public String type;
+	private String type;
 	//Représentation du docID
 	int docId;
 	
