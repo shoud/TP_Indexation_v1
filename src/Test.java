@@ -14,15 +14,17 @@ public class Test
 {
 	//le chemin du corpus remplacer TP_Indexation_Common par Common si le dépot n'est pas utilisé
 	static String CORPUS_FOLDER =".." + File.separator +"TP_Indexation_Common" + File.separator +"corpus2";
-	static String INDEX_DATA =".." + File.separator +"data" + File.separator +"index.data";
+	static String INDEX_DATA ="data" + File.separator +"index.data";
 	
 	/**
 	 * Chargée de construire et afficher un index
 	 */
 	public static void testIndexation()
 	{
-		Index index = Index.indexCorpus(CORPUS_FOLDER);
+		//Index index = Index.indexCorpus(CORPUS_FOLDER);
 		//index.write(INDEX_DATA);
+		Index index = Index.read(INDEX_DATA);
+		index.print();
 	}
 	
 	private static List<String> getFileNames(List<Posting> postings)

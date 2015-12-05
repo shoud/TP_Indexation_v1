@@ -42,7 +42,7 @@ public class Index implements Serializable
 	/**
 	 * Affiche le contenu de l’index dans la console
 	 */
-	void print()
+	public void print()
 	{
 		//Parcour tout le tableau data
 		for(IndexEntry indexEntry : data)
@@ -123,8 +123,11 @@ public class Index implements Serializable
 		{
 			File file = new File(fileName); 
 			FileOutputStream fos = new FileOutputStream(file); 
+			//Ouverture du flux
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			//Ecriture de l'objet index
 			oos.writeObject(this);
+			//Fermeture du flux
 			oos.close();
 		}catch(Exception e)
 		{
@@ -133,15 +136,24 @@ public class Index implements Serializable
 		
 	}
 	
+	/**
+	 *  Lit l’index dans le fichier dont le nom est passé en paramètre et le renvoie
+	 * @param fileName Le fichier à lire
+	 * @return L'index lue dans le fichier
+	 */
 	public static Index read(String fileName)
 	{
 		try
 		{
 			File file = new File(fileName); 
-			FileInputStream fis = new FileInputStream(file); 
+			FileInputStream fis = new FileInputStream(file);
+			//Ouverture du flux
 			ObjectInputStream ois = new ObjectInputStream(fis);
+			//Lecture de l'objet dans le fichier
 			Index result = (Index) ois.readObject();
+			//Fermeture du flux
 			ois.close();
+			//Retourne l'index lue dans le fichier
 			return result;
 		}catch(Exception e)
 		{
