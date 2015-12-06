@@ -3,3 +3,22 @@ Exercice 5 :
 Visuellement ça ressemble à une loi de puissance car sur le graphique :
 	- Fréquence - Occurrences : On peut voir qu'il y a beaucoup de mot de faible fréquence.
 	- log(Fréquence) - log(Occurrences) : ressemble à une droite linéaire.
+
+Exercice 10 :
+
+v1 
+
+Loading the index
+Index loaded, duration= 1670 ms
+
+Processing request :  Project which was created for the Web
+Query processed, duration=10 ms
+Result: 8 document(s)
+[12 16 77 95 98 114 115 191 ]
+Files :
+[13490.txt, 14120.txt, 29872.txt, 35280.txt, 36509.txt, 42948.txt, 4302.txt, 7758.txt]
+
+v2
+
+
+

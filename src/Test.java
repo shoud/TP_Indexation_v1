@@ -21,10 +21,10 @@ public class Test
 	 */
 	public static void testIndexation()
 	{
-		//Index index = Index.indexCorpus(CORPUS_FOLDER);
-		//index.write(INDEX_DATA);
-		Index index = Index.read(INDEX_DATA);
-		index.print();
+		Index index = Index.indexCorpus(CORPUS_FOLDER);
+		index.write(INDEX_DATA);
+		//Index index = Index.read(INDEX_DATA);
+		//index.print();
 	}
 	
 	/**
@@ -63,7 +63,7 @@ public class Test
 		AndQueryEngine andQueryEngine = new AndQueryEngine(index);
 		
 		//Requête project
-		String query = "project"; 
+		String query = " Project which was created for the Web"; //project 
 		System.out.println("Processing request : " + query );
 		List<Posting> listPosting = andQueryEngine.processQuery(query);
 		System.out.println("Result: " + listPosting.size()  +" document(s)");
@@ -75,7 +75,7 @@ public class Test
 		System.out.println(getFileNames(listPosting) + "\n");
 		
 		//Requête project SOFTWARE
-		query = "project SOFTWARE"; 
+		/*query = "project SOFTWARE"; 
 		System.out.println("Processing request : " + query );
 		listPosting = andQueryEngine.processQuery(query);
 		System.out.println("Result: " + listPosting.size()  +" document(s)");
@@ -84,10 +84,10 @@ public class Test
 			System.out.print(posting.toString());
 		System.out.println("]");
 		System.out.println("Files :");
-		System.out.println(getFileNames(listPosting) + "\n");
+		System.out.println(getFileNames(listPosting) + "\n");*/
 		
 		//Requête project SOFTWARE Web
-		query = "project SOFTWARE Web"; 
+		/*query = "project SOFTWARE Web"; 
 		System.out.println("Processing request : " + query );
 		listPosting = andQueryEngine.processQuery(query);
 		System.out.println("Result: " + listPosting.size()  +" document(s)");
@@ -96,7 +96,7 @@ public class Test
 			System.out.print(posting.toString());
 		System.out.println("]");
 		System.out.println("Files :");
-		System.out.println(getFileNames(listPosting) + "\n");
+		System.out.println(getFileNames(listPosting) + "\n");*/
 	}
 	
 	public static void main(String[] args)
