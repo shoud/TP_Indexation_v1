@@ -1,0 +1,5 @@
+Exercice 5 :
+
+Visuellement ça ressemble à une loi de puissance car sur le graphique :
+	- Fréquence - Occurrences : On peut voir qu'il y a beaucoup de mot de faible fréquence.
+	- log(Fréquence) - log(Occurrences) : ressemble à une droite linéaire.
