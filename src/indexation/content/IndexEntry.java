@@ -1,7 +1,7 @@
 package indexation.content;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.LinkedList;
 /**
  * Représnetion d'une entrée de l'index
  * @author thomas
@@ -14,11 +14,11 @@ public class IndexEntry implements Comparable<IndexEntry>, Serializable
 	//Terme concerné
 	public String term;
 	//Les postings associés à au terme
-	public ArrayList<Posting> postings;
+	public LinkedList<Posting> postings;
 	//La fréquence de chaque terme, exprimée en nombre de documents
 	private int frequency;
 	
-	public IndexEntry(String term, ArrayList<Posting> postings)
+	public IndexEntry(String term, LinkedList<Posting> postings)
 	{
 		frequency = 0;
 		this.term = term;
@@ -36,7 +36,7 @@ public class IndexEntry implements Comparable<IndexEntry>, Serializable
 		//Le terme 
 		this.term = term;
 		//Création de la liste de posting vide
-		postings = new ArrayList<Posting>();
+		postings = new LinkedList<Posting>();
 	}
 	
 	@Override

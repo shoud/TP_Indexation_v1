@@ -27,8 +27,7 @@ public class Tokenizer implements Serializable
 	private String regex = "[^\\pL\\pN]";
 	
 	/**
-	 * Tokénise la
-	 * chaîne de caractères string passée en paramètre, et renvoie une liste correspondant à cette
+	 * Tokénise la chaîne de caractères string passée en paramètre, et renvoie une liste correspondant à cette
 	 * décomposition
 	 * @param string chaîne de caractères à tokeniser
 	 * @return  liste correspondant à la décomposition

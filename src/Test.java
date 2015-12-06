@@ -27,32 +27,81 @@ public class Test
 		index.print();
 	}
 	
+	/**
+	 * Reçoit une liste de postings et renvoie la 
+	 *	résolution de requêtes liste des noms de fichier correspondant aux docIds
+	 * @param postings La liste de postings 
+	 * @return Liste des noms corespondant aux postings (docId)
+	 */
 	private static List<String> getFileNames(List<Posting> postings)
 	{
-		String name = null;
+		//Le dossier du corpus
 		File fileFolder = new File(CORPUS_FOLDER);
+		//La liste des fichiers dans le dossier
 		File fileText[] = fileFolder.listFiles();
+		//Initialisation de la liste de résultat
 		List<String> listFileNames = new LinkedList<String>();
+		//Parcour de tout les postings
 		for(Posting posting: postings)
-		{ 
-			name = fileText[posting.docId].getName();
-			listFileNames.add(name);
-		}
+			//Récupération du Nom du fichier grâce au docId
+			listFileNames.add(fileText[posting.docId].getName());
+		//Retourn la liste des noms de fichier corespondant au posting (docId)
 		return listFileNames;
 	}
 	
+	/**
+	 * Tester le traitement des requêtes
+	 */
 	private static void testQuery()
 	{ 
-		String query = "project"; 
+		System.out.println("Loading the index");
+		long debut = System.currentTimeMillis();
+		//Chargement de l'index
 		Index index = Index.read(INDEX_DATA);
+		System.out.println("Index loaded, duration= " + (System.currentTimeMillis() - debut) + " ms\n" );
+		//Initialisation de l'objet permettant de faire les requetes sur l'index
 		AndQueryEngine andQueryEngine = new AndQueryEngine(index);
+		
+		//Requête project
+		String query = "project"; 
+		System.out.println("Processing request : " + query );
 		List<Posting> listPosting = andQueryEngine.processQuery(query);
-		System.out.println(getFileNames(listPosting));
+		System.out.println("Result: " + listPosting.size()  +" document(s)");
+		System.out.print("[");
+		for(Posting posting : listPosting)
+			System.out.print(posting.toString());
+		System.out.println("]");
+		System.out.println("Files :");
+		System.out.println(getFileNames(listPosting) + "\n");
+		
+		//Requête project SOFTWARE
+		query = "project SOFTWARE"; 
+		System.out.println("Processing request : " + query );
+		listPosting = andQueryEngine.processQuery(query);
+		System.out.println("Result: " + listPosting.size()  +" document(s)");
+		System.out.print("[");
+		for(Posting posting : listPosting)
+			System.out.print(posting.toString());
+		System.out.println("]");
+		System.out.println("Files :");
+		System.out.println(getFileNames(listPosting) + "\n");
+		
+		//Requête project SOFTWARE Web
+		query = "project SOFTWARE Web"; 
+		System.out.println("Processing request : " + query );
+		listPosting = andQueryEngine.processQuery(query);
+		System.out.println("Result: " + listPosting.size()  +" document(s)");
+		System.out.print("[");
+		for(Posting posting : listPosting)
+			System.out.print(posting.toString());
+		System.out.println("]");
+		System.out.println("Files :");
+		System.out.println(getFileNames(listPosting) + "\n");
 	}
 	
 	public static void main(String[] args)
 	{
-		testIndexation();
-		//testQuery();
+		//testIndexation();
+		testQuery();
 	}
 }
