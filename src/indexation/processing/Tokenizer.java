@@ -92,7 +92,7 @@ public class Tokenizer implements Serializable
 	 public List<Token> tokenizeCorpus(String folder)
 	 {
 		 //La liste contenant les tokens à retourner
-		 ArrayList<Token> list = new ArrayList<Token>();
+		 List<Token> list = new LinkedList<Token>();
 		 //Pour ouvrir un dossier
 		 File file = new File(folder);
 		 //Récupération de la liste des documents dans le dossier

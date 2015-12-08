@@ -109,7 +109,7 @@ public class Index implements Serializable
 		index.tokenizer = tokenizer;
 		System.out.println("Total duration="+ (System.currentTimeMillis() - startTotal) +" ms");
 		//Affichage de l'index créé
-		index.print();
+		//index.print();
 		//Retourne le nouvelle index
 		return index;
 	}

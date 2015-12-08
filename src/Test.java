@@ -13,7 +13,7 @@ import query.AndQueryEngine;
 public class Test
 {
 	//le chemin du corpus remplacer TP_Indexation_Common par Common si le dépot n'est pas utilisé
-	static String CORPUS_FOLDER =".." + File.separator +"TP_Indexation_Common" + File.separator +"corpus2";
+	static String CORPUS_FOLDER =".." + File.separator +"TP_Indexation_Common" + File.separator +"corpus";
 	static String INDEX_DATA ="data" + File.separator +"index.data";
 	
 	/**
