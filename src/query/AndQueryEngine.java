@@ -134,6 +134,10 @@ public class AndQueryEngine
 			return postings.get(0);
 		//Permet de trier la liste des listes
 		Collections.sort(postings, COMPARATOR);
+		//Supression des listes vides
+		for(int i = 0; i < postings.size(); i++)
+			if(postings.get(0).isEmpty())
+				postings.remove(0);
 		//Si il y a plus de deux liste de liste de posting
 		if(postings.size() > 1)
 		{
