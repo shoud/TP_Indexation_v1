@@ -1,17 +1,13 @@
 package query;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 import indexation.Index;
 import indexation.content.IndexEntry;
 import indexation.content.Posting;
-import indexation.processing.Normalizer;
-import indexation.processing.Tokenizer;
 
 /**
  * Destinée à traiter des requêtes ne contenant que des opérateurs ET 
@@ -136,8 +132,12 @@ public class AndQueryEngine
 		Collections.sort(postings, COMPARATOR);
 		//Supression des listes vides
 		for(int i = 0; i < postings.size(); i++)
+		{
 			if(postings.get(0).isEmpty())
 				postings.remove(0);
+			else
+				break;
+		}
 		//Si il y a plus de deux liste de liste de posting
 		if(postings.size() > 1)
 		{

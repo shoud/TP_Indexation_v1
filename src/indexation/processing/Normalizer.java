@@ -1,6 +1,6 @@
 package indexation.processing;
 
-import java.io.File; //Pour tester la classe
+//import java.io.File; //Pour tester la classe
 import java.io.Serializable;
 import java.text.Normalizer.Form;
 import java.util.Iterator;

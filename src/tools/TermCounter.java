@@ -6,7 +6,6 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -28,8 +27,6 @@ public class TermCounter
 	{
 		//Création de la map à retourner
 		Map<String, Integer> mapRes = new HashMap<String, Integer>();
-		//Permet de compter le nombre de répétition d'un terme
-		Integer compteur;
 		//Pour chaque tokens
 		for(Token token : tokens)
 		{
@@ -104,11 +101,11 @@ public class TermCounter
 	  * Permet de tester la classe TermCounter
 	  * @param args
 	  */
-
+ /*
 		public static void main(String[] args)
 		{
 			TermCounter termCounter = new TermCounter();
-			/*
+			
 			//Test de countTerms
 			List<Token> test = new LinkedList<Token>();
 			test.add(new Token("chat", 0));
@@ -120,7 +117,7 @@ public class TermCounter
 			//System.out.println(mapRes.toString());
 			
 			//Test de writeCounts
-			termCounter.writeCounts(mapRes, "testmap");*/
+			termCounter.writeCounts(mapRes, "testmap");
 			
 			//Test processCorpus
 			 String CORPUS_FOLDER =".." + File.separator +"TP_Indexation_Common" + File.separator +"corpus";
@@ -128,5 +125,5 @@ public class TermCounter
 			processCorpus(CORPUS_FOLDER, TERM_COUNT);
 			
 			
-		}
+		}*/
 }

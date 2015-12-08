@@ -101,7 +101,7 @@ public class Test
 	
 	public static void main(String[] args)
 	{
-		//testIndexation();
+		testIndexation();
 		testQuery();
 	}
 }
